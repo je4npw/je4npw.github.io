@@ -1,103 +1,77 @@
-import Image from 'next/image'
 import Head from 'next/head'
-
 import { Container } from '@/components/Container'
 import {
-  GitHubIcon,
   InstagramIcon,
+  GitHubIcon,
   LinkedInIcon,
-  MailIcon,
 } from "@/components/Icons";
-import portraitImage from '@/images/portrait.jpg'
-import SocialLinkWithNames from "@/components/SocialLinkWithNames";
+import { generateRssFeed } from '@/lib/generateRssFeed'
+import { getAllArticles } from '@/lib/getAllArticles'
+import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
+import SocialLink from "@/components/SocialLinks";
 
-
-export default function About() {
+export default function About({articles}) {
   return (
-    <>
-      <Head>
-        <title>Portifólio Jean Patrick - Sobre</title>
-        <meta
-          name="description"
-          content="Portifólio Jean Patrick - Home"
-        />
-      </Head>
-      <Container className="mt-16 sm:mt-32">
-        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-          <div className="lg:pl-20">
-            <div className="max-w-xs px-2.5 lg:max-w-none">
-              <Image
-                src={portraitImage}
-                alt=""
-                sizes="(min-width: 1024px) 32rem, 20rem"
-                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+      <>
+        <Head>
+          <title>Portifólio Jean Patrick - Home</title>
+          <meta
+              name="description"
+              content="Portifólio Jean Patrick - Home"
+          />
+        </Head>
+        <Container className="mt-9">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-bold tracking-tight text-orange-800 dark:text-[#fe6054] sm:text-5xl">
+              Jean Patrick Wilhvock
+            </h1>
+            <p className="mt-6 text-base text-zinc-800 dark:text-zinc-200">
+
+            </p>
+            <div className="mt-6 flex gap-6">
+              <SocialLink
+                  href="https://github.com/je4npw"
+                  aria-label="Siga-me no Github"
+                  icon={GitHubIcon}
+              />
+              <SocialLink
+                  href="https://linkedin.com/in/je4npw/"
+                  aria-label="Siga-me no LinkedIn"
+                  icon={LinkedInIcon}
+              />
+              <SocialLink
+                  href="https://www.instagram.com/je4npw/"
+                  aria-label="Siga-me no Instagram"
+                  icon={InstagramIcon}
               />
             </div>
           </div>
-          <div className="lg:order-first lg:row-span-2">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I&apos;m Victoria. A leader, artist, and frontend enthusiast in
-              Austin, TX.
-            </h1>
-            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
-              <p>
-                I&apos;m a non-traditional first-generation student pursuing a
-                Bachelor of Science in Computer Science. I&apos;m entering my
-                senior year at Texas State University and I am the founder and
-                president of Girls Who Code TXST. My mission is to empower women
-                and non-binary students to take the reins of their independence
-                and become the leaders they have always admired.
-              </p>
-              <p>
-                I&apos;ve traveled extensively through Southeast Asia and lived
-                in Shanghai, China for a year while teaching English. In 2020, I
-                launched an e-commerce store selling stickers and prints of my
-                artwork to generate donations for various organizations
-                supporting Black and transgender communities.
-              </p>
-              <p>
-                This past summer, I was a frontend engineer intern at a startup
-                called F*** You Pay Me, creating an app to help influencers (a
-                female-majority community) gain pay equality and fair treatment
-                when making deals with brands.
-              </p>
-              <p>
-                In my free time, you can find me rock climbing, working out,
-                dancing, or at home spending quality time with my two
-                cockatiels.
-              </p>
+        </Container>
+        <Container className="mt-24 md:mt-28">
+          <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+            <div className="flex flex-col gap-16">
+              <Experience/>
+            </div>
+            <div className="space-y-10 lg:pl-16 xl:pl-24">
+              <Skills />
             </div>
           </div>
-          <div className="lg:pl-20">
-            <ul role="list">
-              <SocialLinkWithNames href="#" icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
-              </SocialLinkWithNames>
-              <SocialLinkWithNames
-                href="https://github.com/vjordan-cs"
-                icon={GitHubIcon}
-                className="mt-4"
-              >
-                Follow on GitHub
-              </SocialLinkWithNames>
-              <SocialLinkWithNames
-                href="https://linkedin.com/in/victoria-jordan01/"
-                icon={LinkedInIcon}
-                className="mt-4"
-              >
-                Follow on LinkedIn
-              </SocialLinkWithNames>
-              <SocialLinkWithNames
-                href="mailto:vjordan.cs@gmail.com"
-                icon={MailIcon}
-                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-              >
-                vjordan.cs@gmail.com
-              </SocialLinkWithNames>
-            </ul>
-          </div>
-        </div>
-      </Container>
-    </>
+        </Container>
+      </>
   )
+}
+
+export async function getStaticProps() {
+  if (process.env.NODE_ENV === 'production') {
+    await generateRssFeed()
+  }
+
+  return {
+    props: {
+      articles: (await getAllArticles())
+          .slice(0, 4)
+          .map(({ component, ...meta }) => meta),
+    },
+  }
 }
