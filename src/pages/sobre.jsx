@@ -11,7 +11,7 @@ import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import SocialLink from "@/components/SocialLinks";
 
-export default function About({articles}) {
+export default function Sobre({articles}) {
   return (
       <>
         <Head>
