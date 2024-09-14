@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
-import {Container} from "@/components/Container";
+import { Container } from "@/components/Container";
 import {
     GitHubIcon,
     InstagramIcon,
@@ -9,7 +9,8 @@ import {
 } from "@/components/Icons";
 import portraitImage from "@/images/portrait.jpg";
 import SocialLinkWithNames from "@/components/SocialLinkWithNames";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // Importando o framer-motion
 
 export default function Home() {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -18,9 +19,6 @@ export default function Home() {
         // Função para alternar visibilidade do cursor
         const toggleCursor = () => {
             setIsCursorVisible((prev) => !prev);
-        };
-
-        const toggleCursor2 = () => {
         };
 
         // Define o intervalo para o cursor piscante
@@ -38,23 +36,48 @@ export default function Home() {
                 <title>Portifólio Jean Patrick - Sobre</title>
                 <meta name="description" content="Portifólio Jean Patrick - Home"/>
             </Head>
-            <Container className="mt-16 sm:mt-32">
+            <Container className="mt-16 mx-2 sm:mt-32">
                 <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-                    <div className="lg:pl-20">
-                        <div className="max-w-xs px-2.5 lg:max-w-none">
+                    <motion.div
+                        className="lg:pl-20 pl-4"
+                        initial={{ opacity: 0, x: -50 }} // Inicialmente invisível e à esquerda
+                        animate={{ opacity: 1, x: 0 }} // Animação de entrada
+                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                    >
+                        <motion.div
+                            className="max-w-xs px-2.5 lg:max-w-none"
+                            initial={{ opacity: 0, scale: 0.9 }} // Inicialmente invisível e pequeno
+                            animate={{ opacity: 1, scale: 1 }} // Animação ao aparecer
+                            transition={{ duration: 1 }} // Tempo da animação
+                        >
                             <Image
                                 src={portraitImage}
-                                alt=""
+                                alt="Jean Patrick"
                                 sizes="(min-width: 1024px) 32rem, 20rem"
                                 className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
                             />
-                        </div>
-                    </div>
-                    <div className="lg:order-first lg:row-span-2">
-                        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+                        </motion.div>
+                    </motion.div>
+                    <motion.div
+                        className="lg:order-first lg:row-span-2"
+                        initial={{ opacity: 0, x: 50 }} // Inicialmente invisível e à direita
+                        animate={{ opacity: 1, x: 0 }} // Animação de entrada
+                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                    >
+                        <motion.h1
+                            className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+                            initial={{ x: -100, opacity: 0 }} // Inicialmente fora da tela à esquerda
+                            animate={{ x: 0, opacity: 1 }} // Entra suavemente
+                            transition={{ duration: 0.8 }} // Tempo da animação
+                        >
                             Jean Patrick (Je4nPw)
-                        </h1>
-                        <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-200">
+                        </motion.h1>
+                        <motion.div
+                            className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-200"
+                            initial={{ opacity: 0 }} // Inicialmente invisível
+                            animate={{ opacity: 1 }} // Aparece suavemente
+                            transition={{ delay: 0.5, duration: 1 }} // Atraso para aparecer
+                        >
                             <p>
                                 Olá, sou Jean, acadêmico de Ciências da Computação com um grande
                                 entusiasmo por tecnologia e soluções inovadoras. Desde cedo,
@@ -81,10 +104,20 @@ export default function Home() {
                                 colaborar com entidades e organizações que promovam educação
                                 digital e projetos com impacto sustentável.
                             </p>
-                        </div>
-                    </div>
-                    <div className="lg:pl-20">
-                        <ul role="list">
+                        </motion.div>
+                    </motion.div>
+                    <motion.div
+                        className="lg:pl-20"
+                        initial={{ opacity: 0, y: 50 }} // Inicialmente invisível e abaixo
+                        animate={{ opacity: 1, y: 0 }} // Animação de entrada
+                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                    >
+                        <motion.ul
+                            role="list"
+                            initial={{ opacity: 0 }} // Inicialmente invisível
+                            animate={{ opacity: 1 }} // Aparece suavemente
+                            transition={{ delay: 0.5, duration: 1 }} // Atraso e tempo da animação
+                        >
                             <SocialLinkWithNames
                                 href="https://instagram.com/je4npw"
                                 icon={InstagramIcon}
@@ -113,11 +146,16 @@ export default function Home() {
                             >
                                 je4n.pw@gmail.com
                             </SocialLinkWithNames>
-                        </ul>
-                        <div
-                            className="flex flex-col mt-4 border shadow-md shadow-amber-200 border-red-600 hover:border-red-800 rounded-lg">
+                        </motion.ul>
+                        <motion.div
+                            className="flex flex-col mt-4 border shadow-md shadow-amber-200 border-red-600 hover:border-red-800 rounded-lg"
+                            initial={{ opacity: 0, scale: 0.95 }} // Inicialmente invisível e pequeno
+                            animate={{ opacity: 1, scale: 1 }} // Animação de entrada
+                            transition={{ duration: 0.8 }} // Tempo da animação
+                        >
                             <div
-                                className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3">
+                                className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3"
+                            >
                                 <span className="w-3 h-3 rounded-full bg-red-400"></span>
                                 <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
                                 <span className="w-3 h-3 rounded-full bg-green-400"></span>
@@ -129,11 +167,9 @@ export default function Home() {
                                 comunidade.
                                 <span className={isCursorVisible ? "" : "hidden"}>|</span>
                             </div>
-                        </div>
-                    </div>
-
+                        </motion.div>
+                    </motion.div>
                 </div>
-
             </Container>
         </>
     );
