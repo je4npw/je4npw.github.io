@@ -17,7 +17,7 @@ export default function FormacaoComponent() {
             curso: 'Análise e Desenvolvimento de Sistemas',
             logo: ifsc,
             start: '01/2012',
-            end: '12/2012 (imcompleto 2 semestre)',
+            end: '12/2012 (incompleto 2 semestre)',
         },
         {
             instituto: 'Escola de Ensino Médio Victor Meirelles',
