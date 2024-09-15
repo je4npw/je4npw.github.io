@@ -1,9 +1,8 @@
-# File: .github/workflows/publish.yml
 name: publish-to-github-pages
 on:
   push:
     branches:
-      - master
+      - master  # Certifique-se de que esta é a branch correta para publicar
 
 permissions:
   contents: read
@@ -31,12 +30,12 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        run: npx next build
+        run: npx next build  # Adicione o export para gerar o diretório ./out
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out  # Verifique se o diretório ./out está correto
 
   deploy:
     environment:

@@ -8,6 +8,7 @@ import {
 import SocialLink from "@/components/SocialLinks";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // Dados dos cards
 const cardData = [
@@ -129,9 +130,11 @@ export default function Sobre() {
                                 >
                                     {card.imageFirst ? (
                                         <>
-                                            <img
+                                            <Image
                                                 src={card.image}
                                                 alt={card.title}
+                                                width="120"
+                                                height="120"
                                                 className="rounded-lg md:w-1/2 object-cover"
                                             />
                                             <div className="text-center md:text-left">
@@ -145,9 +148,11 @@ export default function Sobre() {
                                                 <b>{card.title}: </b>
                                                 {card.description}
                                             </div>
-                                            <img
+                                            <Image
                                                 src={card.image}
                                                 alt={card.title}
+                                                width="120"
+                                                height="120"
                                                 className="rounded-lg md:w-1/2 object-cover"
                                             />
                                         </>

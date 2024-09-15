@@ -1,10 +1,11 @@
 import {Speaking} from "@/components/Icons";
 
-export default function IdiomasComponent(props) {
+export default function IdiomasComponent() {
     const languages = [
-        {language: "Português", proficiency: "Nativo"},
-        {language: "Inglês", proficiency: "Médio"},
-        {language: "Espanhol", proficiency: "Ouvinte/Leitor"},
+        {language: "🇧🇷 Português", proficiency: "Nativo"},
+        {language: "🇺🇲 Inglês", proficiency: "Médio"},
+        {language: "🇦🇲 Espanhol", proficiency: "Ouvinte/Leitor"},
+        {language: "🇯🇵 Japonês", proficiency: "Iniciante/curioso"},
     ];
 
     return (

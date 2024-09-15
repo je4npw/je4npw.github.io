@@ -1,6 +1,6 @@
-import {Certification} from "@/components/Icons";
+import {School} from "@/components/Icons";
 
-export default function ProjetosComponent(props) {
+export default function ProjetosComponent() {
     const projects = [
         {
             title: "EtherNyx-Project",
@@ -24,7 +24,7 @@ export default function ProjetosComponent(props) {
     return (
         <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
             <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                <Certification className="h-6 w-6 flex-none"/>
+                <School className="h-6 w-6 flex-none"/>
                 <span className="ml-3 text-orange-600 text-xl">Projetos Pessoais</span>
             </h2>
             <ul className="mt-4 space-y-4">

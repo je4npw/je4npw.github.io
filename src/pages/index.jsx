@@ -12,7 +12,7 @@ import SocialLinkWithNames from "@/components/SocialLinkWithNames";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion"; // Importando o framer-motion
 
-export default function Home() {
+export default function Index() {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function Home() {
         <>
             <Head>
                 <title>Portifólio Jean Patrick - Sobre</title>
-                <meta name="description" content="Portifólio Jean Patrick - Home"/>
+                <meta name="description" content="Portifólio Jean Patrick - Index"/>
             </Head>
             <Container className="mt-16 mx-2 sm:mt-32">
                 <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">

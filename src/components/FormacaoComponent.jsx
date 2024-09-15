@@ -1,7 +1,7 @@
 import unopar from "@/images/logos/unopar.png";
 import ifsc from "@/images/logos/ifsc.jpg";
 import victor from "@/images/logos/victor.png";
-import { School} from "@/components/Icons";
+import { Certification} from "@/components/Icons";
 import Image from "next/image";
 
 export default function FormacaoComponent() {
@@ -31,7 +31,7 @@ export default function FormacaoComponent() {
     return (
         <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
             <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                <School className="h-6 w-6 flex-none" />
+                <Certification className="h-6 w-6 flex-none" />
                 <span className="ml-3 text-orange-600 text-xl">Formação</span>
             </h2>
             <ol className="mt-6 space-y-4">
