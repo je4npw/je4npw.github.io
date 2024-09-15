@@ -5,6 +5,10 @@ import rehypePrism from '@mapbox/rehype-prism'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['jsx', 'mdx'],
+  output: "export",
+  images: {
+    unoptimized: true, // Desativa a otimização de imagens
+  },
   reactStrictMode: true,
   swcMinify: true,
   async redirects() {
