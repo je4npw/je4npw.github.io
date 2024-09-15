@@ -24,7 +24,7 @@ export function Footer() {
                                 <NavLink href="/">🏠</NavLink>
                                 <NavLink href="/sobre">🧔</NavLink>
                                 <NavLink href="/projects">⚔</NavLink>
-                                <NavLink href="/artigos">✍</NavLink>
+                                {/*<NavLink href="/artigos">✍</NavLink>*/}
                             </div>
                             <p className="text-sm text-zinc-400 dark:text-zinc-500">
                                 &copy; {new Date().getFullYear()} Je4nPw.

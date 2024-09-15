@@ -5,7 +5,7 @@ import {Popover, Transition} from "@headlessui/react";
 import clsx from "clsx";
 
 import {Container} from "@/components/Container";
-import avatarImage from "@/images/avatar.jpg";
+import avatarImage from "@/images/navbar-logo.svg";
 import {Fragment, useEffect, useRef} from "react";
 import {
     ChevronDownIcon,
@@ -73,7 +73,7 @@ function MobileNavigation(props) {
                                         <MobileNavItem href="/" close={close}>🏠 Home</MobileNavItem>
                                         <MobileNavItem href="/sobre" close={close}>🧔 Sobre</MobileNavItem>
                                         <MobileNavItem href="/servicos" close={close}>⚔ Serviços</MobileNavItem>
-                                        <MobileNavItem href="/artigos" close={close}>✍ Artigos</MobileNavItem>
+                                        {/*<MobileNavItem href="/artigos" close={close}>✍ Artigos</MobileNavItem>*/}
                                     </ul>
                                 </nav>
                             </Popover.Panel>
@@ -116,7 +116,7 @@ function DesktopNavigation(props) {
                 <NavItem href="/">🏠 Home</NavItem>
                 <NavItem href="/sobre">🧔 Sobre</NavItem>
                 <NavItem href="/servicos">⚔ Serviços</NavItem>
-                <NavItem href="/artigos">✍ Artigos</NavItem>
+                {/*<NavItem href="/artigos">✍ Artigos</NavItem>*/}
             </ul>
         </nav>
     );
@@ -190,7 +190,7 @@ function Avatar({large = false, className, ...props}) {
                 alt=""
                 sizes={large ? "4rem" : "2.25rem"}
                 className={clsx(
-                    "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
+                    "rounded-full bg-zinc-100 object-cover dark:bg-zinc-900",
                     large ? "h-16 w-16" : "h-9 w-9"
                 )}
                 priority

@@ -47,7 +47,7 @@ export default function Sobre() {
                             <Image
                                 src={avatarImage}
                                 alt="Avatar de Jean Patrick"
-                                className="rounded-full"
+                                className="rounded-full "
                                 width={350} // Tamanho do avatar
                                 height={350}
                             />

@@ -14,19 +14,34 @@ import { motion } from "framer-motion"; // Importando o framer-motion
 
 export default function Index() {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
+    const [terminalText, setTerminalText] = useState("");
+    const fullText = "[root@localhost]# Com visão voltada à inovação e melhoria contínua, busco soluções que maximizem resultados e proporcionem um impacto positivo tanto para meus clientes quanto para a comunidade.";
 
     useEffect(() => {
-        // Função para alternar visibilidade do cursor
-        const toggleCursor = () => {
-            setIsCursorVisible((prev) => !prev);
+
+        let index = 0;
+
+        const typeWriter = () => {
+            if (index < fullText.length) {
+                setTerminalText(fullText.slice(0, index + 1)); // Atualiza o texto corretamente
+                index++;
+                setTimeout(typeWriter, 50); // Chama recursivamente a função após 50ms
+            } else {
+                // Após a digitação terminar, inicia o cursor piscando
+                const cursorInterval = setInterval(() => {
+                    setIsCursorVisible((prev) => !prev);
+                }, 500);
+                // Limpa o intervalo quando o componente desmonta
+                return () => clearInterval(cursorInterval);
+            }
         };
 
-        // Define o intervalo para o cursor piscante
-        const cursorInterval = setInterval(toggleCursor, 500);
+        // Inicia o efeito de digitação
+        typeWriter();
 
-        // Limpar os intervalos ao desmontar o componente
         return () => {
-            clearInterval(cursorInterval);
+            // Limpa o intervalo quando o componente desmonta
+            clearInterval();
         };
     }, []);
 
@@ -108,15 +123,33 @@ export default function Index() {
                     </motion.div>
                     <motion.div
                         className="lg:pl-20"
-                        initial={{ opacity: 0, y: 50 }} // Inicialmente invisível e abaixo
-                        animate={{ opacity: 1, y: 0 }} // Animação de entrada
-                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                        initial={{opacity: 0, y: 50}} // Inicialmente invisível e abaixo
+                        animate={{opacity: 1, y: 0}} // Animação de entrada
+                        transition={{duration: 1, delay: 0.3}} // Tempo e atraso da animação
                     >
+                        <motion.div
+                            className="flex flex-col mt-4 border shadow-md shadow-amber-200 border-red-600 hover:border-red-800 rounded-lg mb-10"
+                            initial={{opacity: 0, scale: 0.95}} // Inicialmente invisível e pequeno
+                            animate={{opacity: 1, scale: 1}} // Animação de entrada
+                            transition={{duration: 0.8}} // Tempo da animação
+                        >
+                            <div
+                                className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3"
+                            >
+                                <span className="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+                                <span className="w-3 h-3 rounded-full bg-green-400"></span>
+                            </div>
+                            <div className="bg-gray-700 border-t-0 w-full text-gray-200 p-2 rounded-b-lg">
+                                {terminalText}
+                                <span className={isCursorVisible ? "" : "hidden"}>|</span>
+                            </div>
+                        </motion.div>
                         <motion.ul
                             role="list"
-                            initial={{ opacity: 0 }} // Inicialmente invisível
-                            animate={{ opacity: 1 }} // Aparece suavemente
-                            transition={{ delay: 0.5, duration: 1 }} // Atraso e tempo da animação
+                            initial={{opacity: 0}} // Inicialmente invisível
+                            animate={{opacity: 1}} // Aparece suavemente
+                            transition={{delay: 0.5, duration: 1}} // Atraso e tempo da animação
                         >
                             <SocialLinkWithNames
                                 href="https://instagram.com/je4npw"
@@ -147,27 +180,7 @@ export default function Index() {
                                 je4n.pw@gmail.com
                             </SocialLinkWithNames>
                         </motion.ul>
-                        <motion.div
-                            className="flex flex-col mt-4 border shadow-md shadow-amber-200 border-red-600 hover:border-red-800 rounded-lg"
-                            initial={{ opacity: 0, scale: 0.95 }} // Inicialmente invisível e pequeno
-                            animate={{ opacity: 1, scale: 1 }} // Animação de entrada
-                            transition={{ duration: 0.8 }} // Tempo da animação
-                        >
-                            <div
-                                className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3"
-                            >
-                                <span className="w-3 h-3 rounded-full bg-red-400"></span>
-                                <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
-                                <span className="w-3 h-3 rounded-full bg-green-400"></span>
-                            </div>
-                            <div className="bg-gray-700 border-t-0 w-full text-gray-200 p-2 rounded-b-lg">
-                                [root@localhost]# Com visão voltada à inovação e melhoria
-                                contínua, busco soluções que maximizem resultados e proporcionem
-                                um impacto positivo tanto para meus clientes quanto para a
-                                comunidade.
-                                <span className={isCursorVisible ? "" : "hidden"}>|</span>
-                            </div>
-                        </motion.div>
+
                     </motion.div>
                 </div>
             </Container>

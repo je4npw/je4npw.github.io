@@ -1,4 +1,5 @@
 # Portfólio JE4NPW 🚀
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5dfd2193-d685-43e2-b9aa-1541b64e758b/deploy-status)](https://app.netlify.com/sites/je4npw/deploys)
 
 Bem-vindo ao meu portfólio pessoal! Este projeto foi desenvolvido para apresentar meus projetos, habilidades e experiências profissionais como desenvolvedor. Aqui você pode navegar pelos meus trabalhos e conhecer um pouco mais sobre mim.
 

@@ -1,77 +1,90 @@
 import Head from "next/head";
-import { Container } from "@/components/Container";
+import {Container} from "@/components/Container";
 import {
-    InstagramIcon,
-    GitHubIcon,
-    LinkedInIcon,
+    InstagramIcon, GitHubIcon, LinkedInIcon,
 } from "@/components/Icons";
 import SocialLink from "@/components/SocialLinks";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import {useEffect, useState} from "react";
+import {motion} from "framer-motion";
 import Image from "next/image";
+import service1 from "@/images/service1.svg";
+import service2 from "@/images/service2.svg";
+import service3 from "@/images/service3.svg";
+import service4 from "@/images/service4.svg";
+import service5 from "@/images/service5.svg";
+import service6 from "@/images/service6.svg";
 
 // Dados dos cards
-const cardData = [
-    {
-        title: "Desenvolvimento Web",
-        description: "Criação de sites, landing pages e portfólios digitais, focados em design moderno e performance, indexado no Google e com painel de Analytics.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: true
-    },
-    {
-        title: "Gestão de Mídias Sociais e Tráfego Pago",
-        description: "Administração estratégica de redes sociais e campanhas publicitárias, visando alcance e engajamento.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: false
-    },
-    {
-        title: "Desenvolvimento de Sistemas",
-        description: "Projetos de software sob medida, atendendo a necessidades específicas de empresas e comunidades.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: true
-    },
-    {
-        title: "Administração de Infraestrutura",
-        description: "Gerenciamento de infraestrutura física e em nuvem (cloud), garantindo alta disponibilidade e segurança.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: false
-    },
-    {
-        title: "Consultoria em Migração e Implantação de Dados",
-        description: "Planejamento e execução de migrações de sistemas e infraestrutura, com foco em eficiência e confiabilidade.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: true
-    },
-    {
-        title: "Identidade Visual e Movimentação Social",
-        description: "Logotipo, posts, reels, stories, carousel, desenvolvido de acordo com o posicionamento do cliente.",
-        image: "https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=320&h=320&q=80",
-        imageFirst: false
-    }
-];
+const cardData = [{
+    title: "Desenvolvimento Web",
+    description: "Criação de sites, landing pages e portfólios digitais, focados em design moderno e performance, indexado no Google e com painel de Analytics.",
+    image: service1,
+    imageFirst: true
+}, {
+    title: "Gestão de Mídias Sociais e Tráfego Pago",
+    description: "Administração estratégica de redes sociais e campanhas publicitárias, visando alcance e engajamento.",
+    image: service2,
+    imageFirst: false
+}, {
+    title: "Desenvolvimento de Sistemas",
+    description: "Projetos de software sob medida, atendendo a necessidades específicas de empresas e comunidades.",
+    image: service3,
+    imageFirst: true
+}, {
+    title: "Administração de Infraestrutura",
+    description: "Gerenciamento de infraestrutura física e em nuvem (cloud), garantindo alta disponibilidade e segurança.",
+    image: service4,
+    imageFirst: false
+}, {
+    title: "Consultoria em Migração e Implantação de Dados",
+    description: "Planejamento e execução de migrações de sistemas e infraestrutura, com foco em eficiência e confiabilidade.",
+    image: service5,
+    imageFirst: true
+}, {
+    title: "Identidade Visual e Movimentação Social",
+    description: "Logotipo, posts, reels, stories, carousel, desenvolvido de acordo com o posicionamento do cliente.",
+    image: service6,
+    imageFirst: false
+}];
 
 export default function Sobre() {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
+    const [terminalText, setTerminalText] = useState("");
+    const fullText = "[root@localhost]# Meu trabalho consiste em compreender as demandas dos clientes e auxiliar a automatizar seus processos. Para isso ofereço os seguintes serviços:";
 
     useEffect(() => {
-        const toggleCursor = () => {
-            setIsCursorVisible((prev) => !prev);
+
+        let index = 0;
+
+        const typeWriter = () => {
+            if (index < fullText.length) {
+                setTerminalText(fullText.slice(0, index + 1)); // Atualiza o texto corretamente
+                index++;
+                setTimeout(typeWriter, 50); // Chama recursivamente a função após 50ms
+            } else {
+                // Após a digitação terminar, inicia o cursor piscando
+                const cursorInterval = setInterval(() => {
+                    setIsCursorVisible((prev) => !prev);
+                }, 500);
+                // Limpa o intervalo quando o componente desmonta
+                return () => clearInterval(cursorInterval);
+            }
         };
 
-        // Define o intervalo para o cursor piscante
-        const cursorInterval = setInterval(toggleCursor, 500);
+        // Inicia o efeito de digitação
+        typeWriter();
 
-        // Limpar os intervalos ao desmontar o componente
         return () => {
-            clearInterval(cursorInterval);
+            // Limpa o intervalo quando o componente desmonta
+            clearInterval();
         };
     }, []);
 
-    return (
-        <>
+
+    return (<>
             <Head>
                 <title>Portifólio Jean Patrick - Serviços</title>
-                <meta name="description" content="Portifólio Jean Patrick - Serviços" />
+                <meta name="description" content="Portifólio Jean Patrick - Serviços"/>
             </Head>
             <Container className="mt-9">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -100,50 +113,55 @@ export default function Sobre() {
                             />
                         </div>
                     </div>
-                    <div className="flex flex-col mt-4 border shadow-md border-red-600 hover:border-red-800 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]">
-                        <div className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3">
+
+                    {/* Terminal com efeito de digitação */}
+                    <div
+                        className="flex flex-col mt-4 border shadow-md border-red-600 hover:border-red-800 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]">
+                        <div
+                            className="w-full h-11 rounded-t-lg bg-gray-900 flex justify-start items-center space-x-1.5 px-3">
                             <span className="w-3 h-3 rounded-full bg-red-400"></span>
                             <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
                             <span className="w-3 h-3 rounded-full bg-green-400"></span>
                         </div>
                         <div className="bg-gray-700 border-t-0 w-full text-gray-200 p-2 rounded-b-lg">
-                            [root@localhost]# Meu trabalho consiste em compreender as demandas
-                            dos clientes e auxiliar a automatizar seus processos. Para isso
-                            ofereço os seguintes serviços:
+                            {terminalText}
                             <span className={isCursorVisible ? "" : "hidden"}>|</span>
                         </div>
                     </div>
                 </div>
             </Container>
+
+            {/* Cards com efeito 3D */}
             <Container className="mt-24 md:mt-28">
-                <div className="border-t border-zinc-100 pt-10 my-12 pb-16 dark:border-zinc-700/40">
+                <div className="border-t border-zinc-100 pt-10 my-12 pb-16 dark:border-zinc-700/40 ">
                     <div className="text-base text-zinc-600 dark:text-zinc-200">
-                        {/* Cards com imagem e animação de hover */}
-                        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {cardData.map((card, index) => (
-                                <motion.div
+                        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 ">
+                            {cardData.map((card, index) => (<motion.div
                                     key={index}
-                                    className={`rounded-lg p-3 flex flex-col md:flex-row gap-4 items-center transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    className={`rounded-lg hover:bg-zinc-800 p-3 flex flex-col md:flex-row gap-4 items-center transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]`}
+                                    initial={{opacity: 0, y: 20}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{duration: 0.5, delay: index * 0.1}}
+                                    whileHover={{
+                                        scale: 1.05, rotateX: -10, rotateY: 10, transition: {duration: 0.3},
+                                    }}
+                                    style={{
+                                        perspective: "1000px", // Adiciona perspectiva 3D
+                                    }}
                                 >
-                                    {card.imageFirst ? (
-                                        <>
+                                    {card.imageFirst ? (<>
                                             <Image
                                                 src={card.image}
                                                 alt={card.title}
                                                 width="120"
                                                 height="120"
-                                                className="rounded-lg md:w-1/2 object-cover"
+                                                className="rounded-lg md:w-1/3 p-3 object-cover"
                                             />
                                             <div className="text-center md:text-left">
                                                 <b>{card.title}: </b>
                                                 {card.description}
                                             </div>
-                                        </>
-                                    ) : (
-                                        <>
+                                        </>) : (<>
                                             <div className="text-center md:text-left">
                                                 <b>{card.title}: </b>
                                                 {card.description}
@@ -153,16 +171,13 @@ export default function Sobre() {
                                                 alt={card.title}
                                                 width="120"
                                                 height="120"
-                                                className="rounded-lg md:w-1/2 object-cover"
+                                                className="rounded-lg md:w-1/3 p-3 object-cover"
                                             />
-                                        </>
-                                    )}
-                                </motion.div>
-                            ))}
+                                        </>)}
+                                </motion.div>))}
                         </div>
                     </div>
                 </div>
             </Container>
-        </>
-    );
+        </>);
 }
