@@ -25,7 +25,7 @@ function Tool({ title, href, children }) {
   )
 }
 
-export default function Uses() {
+export default function Artigos() {
   return (
     <>
       <Head>
