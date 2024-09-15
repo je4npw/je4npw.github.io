@@ -14,7 +14,7 @@ import Image from "next/image";
 export default function Skills() {
     const skills = [
         {
-            skill: "PHP",
+            skill: "PHP / Laravel",
             score: "Pleno",
             logo: php,
         }, {
