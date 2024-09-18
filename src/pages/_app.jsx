@@ -16,6 +16,50 @@ function usePrevious(value) {
   return ref.current
 }
 
+const commonTitle = "Jean Wick Dev";
+const commonDescription =
+    "Foco na solução! Pega a visão!";
+const commonUrl = "https://je4npw.netlify.app/";
+const commonImage = "https://je4npw.netlify.app/capa.jpg";
+const commonImageDetails = {
+  url: commonImage,
+  width: 1200,
+  height: 630,
+  alt: "Imagem de cartão de visita virtual.",
+};
+
+export const metadata = {
+  title: commonTitle,
+  description: commonDescription,
+  openGraph: {
+    type: "website",
+    title: commonTitle,
+    description: commonDescription,
+    url: commonUrl, // Pode não ser necessário para OpenGraph
+    images: [commonImageDetails],
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: commonTitle,
+    description: commonDescription,
+    images: [commonImage], // Corrigido para plural
+    image_alt: "Imagem de prévia do site no Twitter", // Adicionado alt
+  },
+  author: "Je4nPw",
+  keywords: [
+    "desenvolvimento web",
+    "devops",
+    "análise",
+    "sistemas",
+    "sistema",
+    "banco de dados",
+    "implantação de sistemas",
+    "gestão de nuvem",
+    "ajustes em sistemas",
+  ],
+};
+
 export default function App({ Component, pageProps, router }) {
   let previousPathname = usePrevious(router.pathname)
 

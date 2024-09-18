@@ -138,7 +138,7 @@ export default function Sobre() {
                         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 ">
                             {cardData.map((card, index) => (<motion.div
                                     key={index}
-                                    className={`rounded-lg hover:bg-zinc-800 p-3 flex flex-col md:flex-row gap-4 items-center transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]`}
+                                    className={`rounded-lg dark:hover:bg-zinc-800  p-3 flex flex-col md:flex-row gap-4 items-center transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-[#ff6255]`}
                                     initial={{opacity: 0, y: 20}}
                                     animate={{opacity: 1, y: 0}}
                                     transition={{duration: 0.5, delay: index * 0.1}}
