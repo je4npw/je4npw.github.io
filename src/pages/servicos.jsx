@@ -36,7 +36,7 @@ const cardData = [{
     image: service4,
     imageFirst: false
 }, {
-    title: "Consultoria em Migração e Implantação de Dados",
+    title: "Consultoria em Migração e Implantação",
     description: "Planejamento e execução de migrações de sistemas e infraestrutura, com foco em eficiência e confiabilidade.",
     image: service5,
     imageFirst: true

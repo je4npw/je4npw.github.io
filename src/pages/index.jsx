@@ -149,7 +149,7 @@ export default function Index() {
                             transition={{delay: 0.5, duration: 1}} // Atraso e tempo da animação
                         >
                             <SocialLinkWithNames
-                                href="https://api.whatsapp.com/send?phone=5547999604301&text=Entrei%20em%20contato%20pelo%20novo%20site.%20"
+                                href="https://api.whatsapp.com/send?phone=5547997867376&text=Entrei%20em%20contato%20pelo%20novo%20site.%20"
                                 icon={WhatsApp}
                                 className="mt-4"
                             >
