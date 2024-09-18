@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
     InstagramIcon,
     GitHubIcon,
-    LinkedInIcon,
+    LinkedInIcon, WhatsApp,
 } from "@/components/Icons";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
@@ -87,6 +87,11 @@ export default function Sobre() {
                                     href="https://www.instagram.com/je4npw/"
                                     aria-label="Siga-me no Instagram"
                                     icon={InstagramIcon}
+                                />
+                                <SocialLink
+                                    href="https://api.whatsapp.com/send?phone=5547997867376&text=Entrei%20em%20contato%20pelo%20novo%20site.%20"
+                                    aria-label="Siga-me no Instagram"
+                                    icon={WhatsApp}
                                 />
                             </motion.div>
                         </div>

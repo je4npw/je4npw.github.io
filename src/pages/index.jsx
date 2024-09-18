@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Head from "next/head";
-import { Container } from "@/components/Container";
+import {Container} from "@/components/Container";
 import {
-    GitHubIcon,
-    InstagramIcon,
-    LinkedInIcon,
-    MailIcon,
+    GitHubIcon, InstagramIcon, LinkedInIcon, MailIcon, WhatsApp,
 } from "@/components/Icons";
 import portraitImage from "@/images/portrait.jpg";
 import SocialLinkWithNames from "@/components/SocialLinkWithNames";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion"; // Importando o framer-motion
+import {useEffect, useState} from "react";
+import {motion} from "framer-motion"; // Importando o framer-motion
 
 export default function Index() {
     const [isCursorVisible, setIsCursorVisible] = useState(true);
@@ -55,15 +52,15 @@ export default function Index() {
                 <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
                     <motion.div
                         className="lg:pl-20 pl-4"
-                        initial={{ opacity: 0, x: -50 }} // Inicialmente invisível e à esquerda
-                        animate={{ opacity: 1, x: 0 }} // Animação de entrada
-                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                        initial={{opacity: 0, x: -50}} // Inicialmente invisível e à esquerda
+                        animate={{opacity: 1, x: 0}} // Animação de entrada
+                        transition={{duration: 1, delay: 0.3}} // Tempo e atraso da animação
                     >
                         <motion.div
                             className="max-w-xs px-2.5 lg:max-w-none"
-                            initial={{ opacity: 0, scale: 0.9 }} // Inicialmente invisível e pequeno
-                            animate={{ opacity: 1, scale: 1 }} // Animação ao aparecer
-                            transition={{ duration: 1 }} // Tempo da animação
+                            initial={{opacity: 0, scale: 0.9}} // Inicialmente invisível e pequeno
+                            animate={{opacity: 1, scale: 1}} // Animação ao aparecer
+                            transition={{duration: 1}} // Tempo da animação
                         >
                             <Image
                                 src={portraitImage}
@@ -75,23 +72,23 @@ export default function Index() {
                     </motion.div>
                     <motion.div
                         className="lg:order-first lg:row-span-2"
-                        initial={{ opacity: 0, x: 50 }} // Inicialmente invisível e à direita
-                        animate={{ opacity: 1, x: 0 }} // Animação de entrada
-                        transition={{ duration: 1, delay: 0.3 }} // Tempo e atraso da animação
+                        initial={{opacity: 0, x: 50}} // Inicialmente invisível e à direita
+                        animate={{opacity: 1, x: 0}} // Animação de entrada
+                        transition={{duration: 1, delay: 0.3}} // Tempo e atraso da animação
                     >
                         <motion.h1
                             className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
-                            initial={{ x: -100, opacity: 0 }} // Inicialmente fora da tela à esquerda
-                            animate={{ x: 0, opacity: 1 }} // Entra suavemente
-                            transition={{ duration: 0.8 }} // Tempo da animação
+                            initial={{x: -100, opacity: 0}} // Inicialmente fora da tela à esquerda
+                            animate={{x: 0, opacity: 1}} // Entra suavemente
+                            transition={{duration: 0.8}} // Tempo da animação
                         >
                             Jean Patrick (Je4nPw)
                         </motion.h1>
                         <motion.div
                             className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-200"
-                            initial={{ opacity: 0 }} // Inicialmente invisível
-                            animate={{ opacity: 1 }} // Aparece suavemente
-                            transition={{ delay: 0.5, duration: 1 }} // Atraso para aparecer
+                            initial={{opacity: 0}} // Inicialmente invisível
+                            animate={{opacity: 1}} // Aparece suavemente
+                            transition={{delay: 0.5, duration: 1}} // Atraso para aparecer
                         >
                             <p>
                                 Olá, sou Jean, acadêmico de Ciências da Computação com um grande
@@ -151,6 +148,13 @@ export default function Index() {
                             animate={{opacity: 1}} // Aparece suavemente
                             transition={{delay: 0.5, duration: 1}} // Atraso e tempo da animação
                         >
+                            <SocialLinkWithNames
+                                href="https://api.whatsapp.com/send?phone=5547999604301&text=Entrei%20em%20contato%20pelo%20novo%20site.%20"
+                                icon={WhatsApp}
+                                className="mt-4"
+                            >
+                                WhatsApp
+                            </SocialLinkWithNames>
                             <SocialLinkWithNames
                                 href="https://instagram.com/je4npw"
                                 icon={InstagramIcon}

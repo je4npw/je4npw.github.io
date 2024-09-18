@@ -1,7 +1,7 @@
 import Head from "next/head";
 import {Container} from "@/components/Container";
 import {
-    InstagramIcon, GitHubIcon, LinkedInIcon,
+    InstagramIcon, GitHubIcon, LinkedInIcon, WhatsApp
 } from "@/components/Icons";
 import SocialLink from "@/components/SocialLinks";
 import {useEffect, useState} from "react";
@@ -110,6 +110,11 @@ export default function Sobre() {
                                 href="https://www.instagram.com/je4npw/"
                                 aria-label="Siga-me no Instagram"
                                 icon={InstagramIcon}
+                            />
+                            <SocialLink
+                                href="https://api.whatsapp.com/send?phone=5547997867376&text=Entrei%20em%20contato%20pelo%20novo%20site.%20"
+                                aria-label="Siga-me no Instagram"
+                                icon={WhatsApp}
                             />
                         </div>
                     </div>
